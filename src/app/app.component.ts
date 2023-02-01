@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppGlobal } from './services/app-global';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +8,8 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'password-generator';
+
+  constructor(public appGlobal: AppGlobal) {
+
+  }
 }

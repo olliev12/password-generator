@@ -1,0 +1,91 @@
+.password-generator-block {
+  background-color: whitesmoke;
+  border-radius: 5px;
+  box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
+  border: 1px;
+  border-bottom: 0;
+  margin: 0 auto 10px;
+  max-width: 90%;
+  padding: 20px 16px;
+  position: relative;
+}
+
+
+.generated-password {
+  display: flex;
+  margin: 0 auto 10px;
+  flex-direction: column;
+
+  .text-area {
+    display: flex;
+    flex-direction: column;
+    .password {
+      border: 0;
+      display: flex;
+      // color: #000;
+      // display: block;
+      font-size: 2.25rem;
+      // height: 50px;
+      // left: 0;
+      max-width: 100%;
+      // padding-left: 44px;
+      // padding-right: 108px;
+      // position: absolute;
+      // text-align: left;
+      // top: 50%;
+      // transform: translateY(-50%);
+      width: 100%;
+    }
+
+  }
+  .icon-area {
+    float: right;
+    display: block;
+    height: 32px;
+    // padding: 0;
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    // width: 76px;
+    // width: 20%;
+    .icon {
+      padding-left: 10px;
+    }
+  }
+}
+
+.password-settings {
+  .settings-block{
+    display: inline-block;
+    width: 50%;
+
+    .setting {
+      margin: 10px 10px 10px 20%;
+
+      .slider {
+        width: 100%;
+      }
+
+      .toggle {
+        font-size: x-large;
+        label {
+          padding-left: 20px;
+        }
+      }
+    }
+  }
+}
+
+@media only screen and (max-width: 767px) {
+	.password-generator-block {
+    border-radius: 5px;
+    box-shadow: 0 2px 8px rgb(0 0 0 / 15%);
+    border: 1px;
+    border-bottom: 0;
+    margin: 0 auto 10px;
+    max-width: 90%;
+    padding: 20px 16px;
+    position: relative;
+  }
+}
