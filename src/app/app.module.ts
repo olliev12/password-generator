@@ -20,13 +20,15 @@ import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatProgressBarModule } from '@angular/material/progress-bar'
 import { HttpClientModule } from '@angular/common/http';
 import { AppGlobalModule } from './services/app-global.module';
+import { HomeComponent } from './home/home.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HeaderComponent,
     FooterComponent,
-    GeneratorComponent
+    GeneratorComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,

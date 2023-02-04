@@ -1,11 +1,8 @@
 import { Component } from '@angular/core';
+import { AppGlobal } from '../services/app-global';
+import * as AppConfig from './../config/app-config';
+import { Settings } from './../config/app-config';
 
-export interface Settings {
-  lowerCase: boolean,
-  upperCase: boolean,
-  numbers: boolean,
-  symbols: boolean
-}
 /**
  * @todo list
  * popup message when user attempts settings which are not allowed
@@ -18,12 +15,12 @@ export interface Settings {
 })
 export class GeneratorComponent {
 
-  readonly lowerCaseChars: string = 'abcdefghijklmnopqrstuvwxyz';
-  readonly upperCaseChars: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-  readonly numberChars: string = '0123456789';
-  readonly symbolChars: string = '~`!@#$%^&*()_+-={}[]:";\'?,./|\\';
-  readonly minLength: number = 6;
-  readonly maxLength: number = 64;
+  readonly lowerCaseChars: string = AppConfig.lowerCaseChars;
+  readonly upperCaseChars: string = AppConfig.upperCaseChars;
+  readonly numberChars: string = AppConfig.numberChars;
+  readonly symbolChars: string = AppConfig.symbolChars;
+  readonly minLength: number = AppConfig.minLength;
+  readonly maxLength: number = AppConfig.maxLength;
 
   public generatedPassword: string = 'awesomePassword'
   length: number = 16;
@@ -37,7 +34,9 @@ export class GeneratorComponent {
   alphabet: string = this.lowerCaseChars + this.upperCaseChars + this.numberChars + this.symbolChars;
   public showPassword: boolean = true;
 
-  constructor() {
+  constructor(
+    private appGlobal: AppGlobal
+  ) {
     this.toggles = Object.keys(this.options).map((key) => {
       return key as keyof Settings;
     });
@@ -151,18 +150,19 @@ export class GeneratorComponent {
   }
 
   async validateLength(value: number, force: boolean = false): Promise<boolean> {
-    if (!value && value !==0 && !force) {
-      return Promise.resolve(false);
-    }
-    else {
-      if (value < this.minLength) {
-        this.length = this.minLength;
-      }
-      if (value > this.maxLength) {
-        this.length = this.maxLength;
-      }
-      return Promise.resolve(true);
-    }
+    return Promise.resolve(true);
+    // if (!value && value !==0 && !force) {
+    //   return Promise.resolve(false);
+    // }
+    // else {
+    //   if (value < this.minLength) {
+    //     this.length = this.minLength;
+    //   }
+    //   if (value > this.maxLength) {
+    //     this.length = this.maxLength;
+    //   }
+    //   return Promise.resolve(true);
+    // }
   }
 
   validateCharacterInAlphabet(event: any) {
@@ -180,7 +180,18 @@ export class GeneratorComponent {
   }
 
   public passwordStrength(): number {
-    return (this.generatedPassword.length/64)*100;
+    let strength: number = this.appGlobal.getPasswordStrength(this.generatedPassword, this.options);
+    // // at this length, nothing else matters
+    // strength += this.generatedPassword.length*4;
+    // if (this.generatedPassword.length >= 24) {
+    //   strength = 100;
+    // }
+    // else {
+
+    // }
+    console.log(strength)
+    return strength;
+    // return this.appGlobal.getPasswordStrength(this.generatedPassword, this.options);
   }
 
   public passwordStrengthColor(): string {
@@ -189,7 +200,7 @@ export class GeneratorComponent {
       color = 'accent';
     }
     else if (this.generatedPassword.length > 11) {
-      color = 'primary';
+      color = 'deep-green';
     }
     return color;
   }

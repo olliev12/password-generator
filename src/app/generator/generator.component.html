@@ -1,82 +1,83 @@
+<div class="generator-wrapper">
 
-<div class="title password-generator-block">
-  <h1>
-    Generate an awesome password
-  </h1>
-  <p>Here's some content on why a password needs to be strong <a href="">my blog</a></p>
-  <br>
-  <p>Here's some content on why a password needs to be strong <a href="">my blog</a></p>
-  <br>
-  <p>Here's some content on why a password needs to be strong <a href="">my blog</a></p>
-</div>
-
-<div class="password-generator-block generated-password">
-  <form class="text-area">
-    <!-- <input matNativeControl class="password" type="password"
-    [(ngModel)]="generatedPassword"
-    (ngModelChange)="handleManualPassword()"
-    (keydown)="validateCharacterInAlphabet($event)"
-    (paste)="false"> -->
-    <mat-form-field appearance="fill">
-      <input matInput [type]="showPassword ? 'text' : 'password'" name="password" class="password" type="password"
-        [(ngModel)]="generatedPassword"
-        (ngModelChange)="handleManualPassword()"
-        (keydown)="validateCharacterInAlphabet($event)"
-        (paste)="false">
-        <button mat-icon-button matSuffix (click)="togglePasswordVisibility()" class="input-icon" aria-label="Visibility icon">
-          <mat-icon>{{showPassword?'visibility_off':'visibility'}}</mat-icon>
-        </button>
-        <button mat-icon-button matSuffix [cdkCopyToClipboard]="generatedPassword" class="input-icon" aria-label="Copy icon">
-          <mat-icon>file_copy</mat-icon>
-        </button>
-        <button mat-icon-button matSuffix (click)="generateRandomPassword()" class="input-icon" aria-label="Refresh icon">
-          <mat-icon>refresh</mat-icon>
-        </button>
-
-    </mat-form-field>
-
-    <mat-progress-bar mode="determinate" [value]="passwordStrength()" [color]="passwordStrengthColor()"></mat-progress-bar>
-
-</form>
-  <!-- <div class="icon-area">
-    <mat-icon class="icon" matSuffix>visibility</mat-icon>
-    <img class="icon" src="../../assets/images/copy.png" alt="copy" [cdkCopyToClipboard]="generatedPassword">
-    <img class="icon" src="../../assets/images/reset.png" alt="copy" (click)="generateRandomPassword()">
-  </div> -->
-
-</div>
-
-<div class="password-generator-block password-settings">
-  <div class="row">
-    <h2>Customize</h2>
-  </div>
-  <hr>
-  <div class="row">
-    <div class="col-6-sm settings-block">
-      <div class="setting">
-        Password Length
-      <input class="length" type="number" [(ngModel)]="length" (ngModelChange)="settingsUpdated('length', $event)">
-      </div>
-      <div class="setting">
-        <mat-slider color="accent" class="slider">
-          <input matSliderThumb [(ngModel)]="length" [min]="minLength" [max]="maxLength" (ngModelChange)="settingsUpdated('length', $event)">
-        </mat-slider>
-      </div>
-    </div>
-    <div class="col-6-sm settings-block">
-      <div *ngFor="let toggle of toggles" class="setting">
-        <mat-slide-toggle
-        class="toggle"
-        color="primary"
-        [name]="toggle"
-        [(ngModel)]="options[toggle]"
-        (change)="settingsUpdated('toggle', $event)">
-        Include {{toggle}}
-      </mat-slide-toggle>
-      </div>
-    </div>
+  <div class="title">
+    <h1>
+      Generate an awesome password
+    </h1>
+    <p>Here's some content on why a password needs to be strong <a href="">my blog</a></p>
+    <br>
+    <p>Here's some content on why a password needs to be strong <a href="">my blog</a></p>
   </div>
 
+  <div class="password-generator-block generated-password">
+    <form class="text-area">
+      <!-- <input matNativeControl class="password" type="password"
+      [(ngModel)]="generatedPassword"
+      (ngModelChange)="handleManualPassword()"
+      (keydown)="validateCharacterInAlphabet($event)"
+      (paste)="false"> -->
+      <mat-form-field appearance="fill">
+        <input matInput [type]="showPassword ? 'text' : 'password'" name="password" class="password" type="password"
+          [(ngModel)]="generatedPassword"
+          (ngModelChange)="handleManualPassword()"
+          (keydown)="validateCharacterInAlphabet($event)"
+          (paste)="false">
+          <button mat-icon-button matSuffix (click)="togglePasswordVisibility()" class="input-icon" aria-label="Visibility icon">
+            <mat-icon>{{showPassword?'visibility_off':'visibility'}}</mat-icon>
+          </button>
+          <button mat-icon-button matSuffix [cdkCopyToClipboard]="generatedPassword" class="input-icon" aria-label="Copy icon">
+            <mat-icon>file_copy</mat-icon>
+          </button>
+          <button mat-icon-button matSuffix (click)="generateRandomPassword()" class="input-icon" aria-label="Refresh icon">
+            <mat-icon>refresh</mat-icon>
+          </button>
+
+      </mat-form-field>
+
+      <mat-progress-bar mode="determinate" [value]="passwordStrength()" [color]="passwordStrengthColor()"></mat-progress-bar>
+
+  </form>
+    <!-- <div class="icon-area">
+      <mat-icon class="icon" matSuffix>visibility</mat-icon>
+      <img class="icon" src="../../assets/images/copy.png" alt="copy" [cdkCopyToClipboard]="generatedPassword">
+      <img class="icon" src="../../assets/images/reset.png" alt="copy" (click)="generateRandomPassword()">
+    </div> -->
+
+  </div>
+
+  <div class="password-generator-block password-settings">
+    <div class="row">
+      <h2>Customize</h2>
+    </div>
+    <hr>
+    <div class="row">
+      <div class="col-6-sm settings-block">
+        <div class="setting">
+          Password Length
+        <input class="length" type="number" [(ngModel)]="length" (ngModelChange)="settingsUpdated('length', $event)">
+        </div>
+        <div class="setting">
+          <mat-slider color="accent" class="slider">
+            <input matSliderThumb [(ngModel)]="length" [min]="minLength" [max]="maxLength" (ngModelChange)="settingsUpdated('length', $event)">
+          </mat-slider>
+        </div>
+      </div>
+      <div class="col-6-sm settings-block">
+        <div *ngFor="let toggle of toggles" class="setting">
+          <mat-slide-toggle
+          class="toggle"
+          color="primary"
+          [name]="toggle"
+          [(ngModel)]="options[toggle]"
+          (change)="settingsUpdated('toggle', $event)">
+          Include {{toggle}}
+        </mat-slide-toggle>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+
+
 </div>
-
-
