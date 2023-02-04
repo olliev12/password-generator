@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppGlobal } from '../services/app-global';
 
 @Component({
   selector: 'app-header',
@@ -6,5 +7,16 @@ import { Component } from '@angular/core';
   styleUrls: ['./header.component.scss']
 })
 export class HeaderComponent {
+
+  public menuOpen: boolean = false;
+
+  constructor(private appGlobal: AppGlobal) {
+
+  }
+
+  public toggleMenu() {
+    this.menuOpen = !this.menuOpen;
+    this.appGlobal.toggleMenu();
+  }
 
 }

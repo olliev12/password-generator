@@ -18,6 +18,7 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatProgressBarModule } from '@angular/material/progress-bar'
+import { MatButtonToggleModule } from '@angular/material/button-toggle'
 import { HttpClientModule } from '@angular/common/http';
 import { AppGlobalModule } from './services/app-global.module';
 import { HomeComponent } from './home/home.component';
@@ -46,6 +47,7 @@ import { HomeComponent } from './home/home.component';
     MatToolbarModule,
     MatSidenavModule,
     MatProgressBarModule,
+    MatButtonToggleModule,
     HttpClientModule,
     AppGlobalModule.forRoot()
   ],

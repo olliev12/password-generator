@@ -8,10 +8,18 @@ import { Settings } from './../config/app-config';
 export class AppGlobal {
   headerHeight: BehaviorSubject<number> = new BehaviorSubject<number>(90);
   footerHeight: BehaviorSubject<number> = new BehaviorSubject<number>(190);
-  showTopMenu: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(true);
+  menuOpened: BehaviorSubject<boolean> = new BehaviorSubject<boolean>(false);
 
   constructor(public router: Router) {
 
+  }
+
+  public toggleMenu() {
+    this.menuOpened.next(!this.menuOpened.value);
+  }
+
+  public getMenuOpened(): boolean {
+    return this.menuOpened.value;
   }
 
   public getPasswordStrength(password: string, options: Settings): number {

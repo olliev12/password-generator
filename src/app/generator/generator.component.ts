@@ -21,6 +21,7 @@ export class GeneratorComponent {
   readonly symbolChars: string = AppConfig.symbolChars;
   readonly minLength: number = AppConfig.minLength;
   readonly maxLength: number = AppConfig.maxLength;
+  readonly modes: [string, any][] = Object.entries(AppConfig.generatorModes);
 
   public generatedPassword: string = 'awesomePassword'
   length: number = 16;
@@ -34,14 +35,20 @@ export class GeneratorComponent {
   alphabet: string = this.lowerCaseChars + this.upperCaseChars + this.numberChars + this.symbolChars;
   public showPassword: boolean = true;
 
+  selectedMode: string = this.modes[0][0];
+
   constructor(
-    private appGlobal: AppGlobal
+    public appGlobal: AppGlobal
   ) {
     this.toggles = Object.keys(this.options).map((key) => {
       return key as keyof Settings;
     });
     this.alphabet = this.createAlphabet();
     this.generateRandomPassword();
+  }
+
+  selectMode(mode: string) {
+    this.selectedMode = mode;
   }
 
   generateRandomPassword(): string {
@@ -189,7 +196,7 @@ export class GeneratorComponent {
     // else {
 
     // }
-    console.log(strength)
+    // console.log(strength)
     return strength;
     // return this.appGlobal.getPasswordStrength(this.generatedPassword, this.options);
   }

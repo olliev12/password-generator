@@ -18,9 +18,17 @@ $theme: mat.define-light-theme((
   typography: mat.define-typography-config(),
   density: 0,
 ));
-
+// $custom-colors: (
+//   custom-color-a: mat-color($mat-green, 700),
+//   custom-color-b: mat-color($mat-red, 400),
+// );
+// $theme: map-merge($theme, (custom-colors: $custom-colors));
 
 @include mat.all-component-themes($theme);
 
 @include mat.typography-hierarchy($theme);
 
+.body-wrapper {
+  background-color: map-get($accent, 100);
+  padding-bottom: 40px;
+}

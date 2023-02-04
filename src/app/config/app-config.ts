@@ -4,6 +4,11 @@ export const numberChars: string = '0123456789';
 export const symbolChars: string = '~`!@#$%^&*()_+-={}[]:";\'?,./|\\';
 export const minLength: number = 6;
 export const maxLength: number = 64;
+export const generatorModes: object = {
+  random: 'Random Password Generator',
+  advanced: 'Advanced (free!)',
+  test: 'Test your Password\'s Strength'
+}
 export interface Settings {
   lowerCase: boolean,
   upperCase: boolean,

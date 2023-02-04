@@ -1,6 +1,10 @@
 
-
-
-
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; background-color: whitesmoke !important;}
+
+.menu-closed {
+  margin-top: 56px;
+}
+.menu-opened {
+  margin-top: 112px;
+}
