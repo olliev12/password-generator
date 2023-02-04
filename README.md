@@ -31,4 +31,5 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 https://material.angular.io/
 https://www.lastpass.com/features/password-generator#generatorTool
+https://www.uic.edu/apps/strong-password/
 https://github.com/olliev12/password-generator

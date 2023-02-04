@@ -1,11 +1,24 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { GeneratorComponent } from './generator/generator.component';
+import { HomeComponent } from './home/home.component';
 
 const routes: Routes = [
   {
     path: '',
-    component: GeneratorComponent
+    component: HomeComponent
+  },
+  // {
+  //   path: 'home',
+  //   component: HomeComponent
+  // },
+  {
+    path: 'generator',
+    loadChildren: () => import('./generator/generator.module').then(m => m.GeneratorModule)
+  },
+  {
+    path: '**',
+    redirectTo: '',
+    pathMatch: 'full'
   },
 
 ];

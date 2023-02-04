@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { AppGlobal } from '../services/app-global';
 
 @Component({
   selector: 'app-home',
@@ -6,5 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent {
+
+  constructor(public appGlobal: AppGlobal) {
+
+  }
 
 }
