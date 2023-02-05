@@ -1,19 +1,19 @@
 import { Component } from '@angular/core';
 import { AppGlobal } from '../services/app-global';
-import * as AppConfig from './../config/app-config';
-import { Settings } from './../config/app-config';
+import * as AppConfig from '../config/app-config';
+import { Settings } from '../config/app-config';
 
 /**
  * @todo list
  * popup message when user attempts settings which are not allowed
  */
 @Component({
-  selector: 'app-generator',
-  templateUrl: './generator.component.html',
-  styleUrls: ['./generator.component.scss'],
+  selector: 'app-password',
+  templateUrl: './password.component.html',
+  styleUrls: ['./password.component.scss'],
   host: {'class': 'box'}
 })
-export class GeneratorComponent {
+export class PasswordComponent {
 
   readonly lowerCaseChars: string = AppConfig.lowerCaseChars;
   readonly upperCaseChars: string = AppConfig.upperCaseChars;
@@ -126,6 +126,18 @@ export class GeneratorComponent {
         return;
     }
 
+  }
+
+  public childSettingsUpdated(event: any) {
+    if (event.options) {
+      this.options = event.options;
+    }
+    if (event.length) {
+      this.length = event.length;
+    }
+    if (event.type && (typeof event.type === 'string') && event.event) {
+      this.settingsUpdated(event.type, event.event);
+    }
   }
 
   handleToggle(event: any) {

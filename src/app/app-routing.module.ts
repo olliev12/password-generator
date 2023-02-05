@@ -12,8 +12,8 @@ const routes: Routes = [
   //   component: HomeComponent
   // },
   {
-    path: 'generator',
-    loadChildren: () => import('./generator/generator.module').then(m => m.GeneratorModule)
+    path: 'password',
+    loadChildren: () => import('./password/password.module').then(m => m.PasswordModule)
   },
   {
     path: '**',

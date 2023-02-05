@@ -2,8 +2,8 @@ import { NgModule } from '@angular/core';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 
-import { GeneratorComponent } from './generator.component';
-import { GeneratorRoutingModule } from './generator-routing.module';
+import { PasswordComponent } from './password.component';
+import { PasswordRoutingModule } from './password-routing.module';
 import { ClipboardModule } from '@angular/cdk/clipboard'
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatSliderModule } from '@angular/material/slider';
@@ -16,17 +16,23 @@ import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatProgressBarModule } from '@angular/material/progress-bar'
 import { MatButtonToggleModule } from '@angular/material/button-toggle'
 import { HttpClientModule } from '@angular/common/http';
-import { AppGlobalModule } from './../services/app-global.module';
+import { AppGlobalModule } from '../services/app-global.module';
+import { RandomPasswordGeneratorComponent } from './random-password-generator/random-password-generator.component';
+import { AdvancedPasswordGeneratorComponent } from './advanced-password-generator/advanced-password-generator.component';
+import { PasswordStrengthTestComponent } from './password-strength-test/password-strength-test.component';
 
 @NgModule({
   declarations: [
-    GeneratorComponent
+    PasswordComponent,
+    RandomPasswordGeneratorComponent,
+    AdvancedPasswordGeneratorComponent,
+    PasswordStrengthTestComponent
   ],
   imports: [
     ReactiveFormsModule,
     FormsModule,
     CommonModule,
-    GeneratorRoutingModule,
+    PasswordRoutingModule,
     ClipboardModule,
     MatSlideToggleModule,
     MatSliderModule,
@@ -43,4 +49,4 @@ import { AppGlobalModule } from './../services/app-global.module';
   ],
   providers: []
 })
-export class GeneratorModule { }
+export class PasswordModule { }
