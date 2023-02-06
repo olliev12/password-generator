@@ -16,10 +16,10 @@ export class PasswordStrengthTestComponent implements OnInit, OnChanges {
   }
 
   ngOnInit(){
-
+    console.log(this.password);
   }
 
-  ngOnChanges() {
-
+  ngOnChanges(changes: any) {
+    console.log(changes);
   }
 }

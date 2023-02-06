@@ -57,12 +57,27 @@ export class PasswordComponent implements OnInit {
           if (mode) {
             this.setMode(mode);
           }
+          else {
+            this.router.navigate([`password/${this.modes[0].route}`]);
+          }
         }
       });
   }
 
   setMode(mode: AppConfig.Mode) {
     this.selectedMode = mode;
+    switch (this.selectedMode.name) {
+      case this.modes[0].name:
+        // todo reset options & length
+        this.generateRandomPassword();
+        break;
+      case this.modes[1].name:
+        // todo generate advanced password
+        break;
+      case this.modes[2].name:
+        this.generatedPassword = '';
+        break;
+    }
   }
 
   selectMode(mode: AppConfig.Mode) {
@@ -85,7 +100,7 @@ export class PasswordComponent implements OnInit {
   }
 
   createAlphabet(): string {
-    var mask = '';
+    let mask = '';
     if (this.options.lowerCase) mask += this.lowerCaseChars;
     if (this.options.upperCase) mask += this.upperCaseChars;
     if (this.options.numbers) mask += this.numberChars;
@@ -219,17 +234,7 @@ export class PasswordComponent implements OnInit {
 
   public passwordStrength(): number {
     let strength: number = this.appGlobal.getPasswordStrength(this.generatedPassword, this.options);
-    // // at this length, nothing else matters
-    // strength += this.generatedPassword.length*4;
-    // if (this.generatedPassword.length >= 24) {
-    //   strength = 100;
-    // }
-    // else {
-
-    // }
-    // console.log(strength)
     return strength;
-    // return this.appGlobal.getPasswordStrength(this.generatedPassword, this.options);
   }
 
   public passwordStrengthColor(): string {
