@@ -1,7 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AppGlobal } from '../services/app-global';
 import * as AppConfig from '../config/app-config';
 import { Settings } from '../config/app-config';
+import { ActivatedRoute, Router } from '@angular/router';
 
 /**
  * @todo list
@@ -10,10 +11,9 @@ import { Settings } from '../config/app-config';
 @Component({
   selector: 'app-password',
   templateUrl: './password.component.html',
-  styleUrls: ['./password.component.scss'],
-  host: {'class': 'box'}
+  styleUrls: ['./password.component.scss']
 })
-export class PasswordComponent {
+export class PasswordComponent implements OnInit {
 
   readonly lowerCaseChars: string = AppConfig.lowerCaseChars;
   readonly upperCaseChars: string = AppConfig.upperCaseChars;
@@ -21,7 +21,7 @@ export class PasswordComponent {
   readonly symbolChars: string = AppConfig.symbolChars;
   readonly minLength: number = AppConfig.minLength;
   readonly maxLength: number = AppConfig.maxLength;
-  readonly modes: [string, any][] = Object.entries(AppConfig.generatorModes);
+  readonly modes: AppConfig.Mode[] = AppConfig.modes;
 
   public generatedPassword: string = 'awesomePassword'
   length: number = 16;
@@ -35,10 +35,12 @@ export class PasswordComponent {
   alphabet: string = this.lowerCaseChars + this.upperCaseChars + this.numberChars + this.symbolChars;
   public showPassword: boolean = true;
 
-  selectedMode: string = this.modes[0][0];
+  selectedMode: AppConfig.Mode = this.modes[0];
 
   constructor(
-    public appGlobal: AppGlobal
+    public appGlobal: AppGlobal,
+    private route: ActivatedRoute,
+    private router: Router
   ) {
     this.toggles = Object.keys(this.options).map((key) => {
       return key as keyof Settings;
@@ -47,8 +49,25 @@ export class PasswordComponent {
     this.generateRandomPassword();
   }
 
-  selectMode(mode: string) {
+  ngOnInit(): void {
+      this.route.params.subscribe((params) => {
+        console.log(params);
+        if (params.mode) {
+          let mode = this.modes.find((mode) => mode.route === params.mode);
+          if (mode) {
+            this.setMode(mode);
+          }
+        }
+      });
+  }
+
+  setMode(mode: AppConfig.Mode) {
     this.selectedMode = mode;
+  }
+
+  selectMode(mode: AppConfig.Mode) {
+    this.setMode(mode);
+    this.router.navigate([`password/${this.selectedMode.route}`]);
   }
 
   generateRandomPassword(): string {

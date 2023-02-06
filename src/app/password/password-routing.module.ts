@@ -6,17 +6,17 @@ const routes: Routes = [
   {
     path: '',
     component: PasswordComponent,
-    children: [
-      { path: 'random-password-generator', component: PasswordComponent },
-      { path: 'advanced-password-generator', component: PasswordComponent },
-      { path: 'password-strength-test', component: PasswordComponent },
-    ]
+    // children: [
+    //   { path: 'random-password-generator', component: PasswordComponent },
+    //   { path: 'advanced-password-generator', component: PasswordComponent },
+    //   { path: 'password-strength-test', component: PasswordComponent },
+    // ]
   },
-  {
-    path: '',
-    redirectTo: 'random-password-generator',
-    pathMatch: 'full'
-  }
+  // {
+  //   path: '',
+  //   redirectTo: 'random-password-generator',
+  //   pathMatch: 'full'
+  // }
 ]
 
 @NgModule({

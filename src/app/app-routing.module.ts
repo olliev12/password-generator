@@ -13,6 +13,11 @@ const routes: Routes = [
   // },
   {
     path: 'password',
+    redirectTo: 'password/random-password-generator',
+    pathMatch: 'full'
+  },
+  {
+    path: 'password/:mode',
     loadChildren: () => import('./password/password.module').then(m => m.PasswordModule)
   },
   {
