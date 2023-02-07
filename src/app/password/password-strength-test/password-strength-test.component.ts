@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, OnChanges } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChanges } from '@angular/core';
 import { AppGlobal } from '../../services/app-global';
 
 @Component({
@@ -19,7 +19,11 @@ export class PasswordStrengthTestComponent implements OnInit, OnChanges {
     console.log(this.password);
   }
 
-  ngOnChanges(changes: any) {
-    console.log(changes);
+  ngOnChanges(changes: SimpleChanges) {
+    for (let change in changes) {
+      if (change === 'password') {
+        console.log(this.password)
+      }
+    }
   }
 }
