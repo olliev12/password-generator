@@ -14,6 +14,7 @@ import { MatSidenavModule } from '@angular/material/sidenav'
 import { HttpClientModule } from '@angular/common/http';
 import { AppGlobalModule } from './services/app-global.module';
 import { HomeComponent } from './home/home.component';
+import {provideClientHydration} from '@angular/platform-browser';
 
 @NgModule({
   declarations: [
@@ -35,7 +36,7 @@ import { HomeComponent } from './home/home.component';
     HttpClientModule,
     AppGlobalModule.forRoot()
   ],
-  providers: [],
+  providers: [provideClientHydration()],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

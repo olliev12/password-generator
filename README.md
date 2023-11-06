@@ -37,3 +37,8 @@ https://moz.com/domain-analysis?site=calculator.net
 https://www.shopify.com/blog/domain-seo#:~:text=other%20SEO%20strategies.-,Does%20domain%20name%20matter%20for%20SEO%3F,from%20people%20and%20search%20engines.
 https://www.calculator.net/
 https://www.similarweb.com/website/calculator.net/#overview
+
+- finish header
+- finish footer
+- create a homepage
+- create a blog landing page
