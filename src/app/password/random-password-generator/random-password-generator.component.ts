@@ -1,5 +1,4 @@
 import { Component, EventEmitter, Input, Output } from '@angular/core';
-import * as AppConfig from '../../config/app-config';
 import { Settings } from '../../config/app-config';
 
 @Component({
@@ -9,9 +8,9 @@ import { Settings } from '../../config/app-config';
 })
 export class RandomPasswordGeneratorComponent {
 
-  @Input() length: number = 0;
-  @Input() minLength: number = 0;
-  @Input() maxLength: number = 0;
+  @Input() length = 0;
+  @Input() minLength = 0;
+  @Input() maxLength = 0;
   @Input() toggles: (keyof Settings)[] = [];
   @Input() options: Settings = {
     lowerCase: true,
@@ -20,10 +19,6 @@ export class RandomPasswordGeneratorComponent {
     symbols: true
   };
   @Output() updateSettings: EventEmitter<object> = new EventEmitter<object>();
-
-  constructor() {
-
-  }
 
   settingsUpdated(type: string, event: any) {
     this.updateSettings.emit({

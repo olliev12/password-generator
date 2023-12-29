@@ -8,7 +8,7 @@ import { AppGlobal } from '../../services/app-global';
 })
 export class PasswordStrengthTestComponent implements OnInit, OnChanges {
 
-  @Input() password: string = '';
+  @Input() password = '';
   constructor(
     public appGlobal: AppGlobal
   ) {
@@ -20,7 +20,7 @@ export class PasswordStrengthTestComponent implements OnInit, OnChanges {
   }
 
   ngOnChanges(changes: SimpleChanges) {
-    for (let change in changes) {
+    for (const change in changes) {
       if (change === 'password') {
         console.log(this.password)
       }

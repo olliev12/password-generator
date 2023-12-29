@@ -1,9 +1,9 @@
-export const lowerCaseChars: string = 'abcdefghijklmnopqrstuvwxyz';
-export const upperCaseChars: string = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
-export const numberChars: string = '0123456789';
-export const symbolChars: string = '~`!@#$%^&*()_+-={}[]:";\'?,./|\\';
-export const minLength: number = 6;
-export const maxLength: number = 64;
+export const lowerCaseChars = 'abcdefghijklmnopqrstuvwxyz';
+export const upperCaseChars = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ';
+export const numberChars = '0123456789';
+export const symbolChars = '~`!@#$%^&*()_+-={}[]:";\'?,./|\\';
+export const minLength = 6;
+export const maxLength = 64;
 export const modes: Mode[] = [
   {
     name: 'random',

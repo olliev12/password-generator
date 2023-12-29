@@ -8,7 +8,7 @@ import { AppGlobal } from '../services/app-global';
 })
 export class HeaderComponent {
 
-  public menuOpen: boolean = false;
+  public menuOpen = false;
 
   constructor(private appGlobal: AppGlobal) {
 

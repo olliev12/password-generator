@@ -15,16 +15,16 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class PasswordComponent implements OnInit {
 
-  readonly lowerCaseChars: string = AppConfig.lowerCaseChars;
-  readonly upperCaseChars: string = AppConfig.upperCaseChars;
-  readonly numberChars: string = AppConfig.numberChars;
-  readonly symbolChars: string = AppConfig.symbolChars;
+  readonly lowerCaseChars = AppConfig.lowerCaseChars;
+  readonly upperCaseChars = AppConfig.upperCaseChars;
+  readonly numberChars = AppConfig.numberChars;
+  readonly symbolChars = AppConfig.symbolChars;
   readonly minLength: number = AppConfig.minLength;
   readonly maxLength: number = AppConfig.maxLength;
   readonly modes: AppConfig.Mode[] = AppConfig.modes;
 
-  public generatedPassword: string = 'awesomePassword'
-  length: number = 16;
+  public generatedPassword = 'awesomePassword'
+  length = 16;
   toggles: (keyof Settings)[] = [];
   options: Settings = {
     lowerCase: true,
@@ -32,8 +32,8 @@ export class PasswordComponent implements OnInit {
     numbers: true,
     symbols: true
   };
-  alphabet: string = this.lowerCaseChars + this.upperCaseChars + this.numberChars + this.symbolChars;
-  public showPassword: boolean = true;
+  alphabet = this.lowerCaseChars + this.upperCaseChars + this.numberChars + this.symbolChars;
+  public showPassword = true;
 
   selectedMode: AppConfig.Mode = this.modes[0];
 
@@ -53,7 +53,7 @@ export class PasswordComponent implements OnInit {
       this.route.params.subscribe((params) => {
         console.log(params);
         if (params.mode) {
-          let mode = this.modes.find((mode) => mode.route === params.mode);
+          const mode = this.modes.find((mode) => mode.route === params.mode);
           if (mode) {
             this.setMode(mode);
           }
@@ -86,7 +86,7 @@ export class PasswordComponent implements OnInit {
   }
 
   generateRandomPassword(): string {
-    let pass: string = '';
+    let pass = '';
     this.validateLength(this.length, true);
     this.alphabet = this.createAlphabet();
 
@@ -112,8 +112,8 @@ export class PasswordComponent implements OnInit {
     if (pass.length < 4) {
       return pass;
     }
-    let uniqueIndecies: number[] = [];
-    let chars = Array.from(pass)
+    const uniqueIndecies: number[] = [];
+    const chars = Array.from(pass)
     if (this.options.lowerCase) {
       this.replace(this.lowerCaseChars, chars, uniqueIndecies);
     }
@@ -175,8 +175,8 @@ export class PasswordComponent implements OnInit {
   }
 
   handleToggle(event: any) {
-    let toggle: keyof Settings = event.source.name as keyof Settings;
-    let allTogglesWouldBeOff: boolean = this.allTogglesWouldBeOff(toggle);
+    const toggle: keyof Settings = event.source.name as keyof Settings;
+    const allTogglesWouldBeOff: boolean = this.allTogglesWouldBeOff(toggle);
 
     if (allTogglesWouldBeOff) {
       this.options[toggle] = true;
@@ -185,9 +185,9 @@ export class PasswordComponent implements OnInit {
   }
 
   allTogglesWouldBeOff(toggle: keyof Settings): boolean {
-    let disable: boolean = false;
-    let atLeastOneToggleOn: boolean = false;
-    for (let k of this.toggles) {
+    let disable = false;
+    let atLeastOneToggleOn = false;
+    for (const k of this.toggles) {
       if (k != toggle) {
         atLeastOneToggleOn = atLeastOneToggleOn || this.options[k];
       }
@@ -202,7 +202,7 @@ export class PasswordComponent implements OnInit {
     this.length = this.generatedPassword.length;
   }
 
-  async validateLength(value: number, force: boolean = false): Promise<boolean> {
+  async validateLength(value: number, force = false): Promise<boolean> {
     return Promise.resolve(true);
     // if (!value && value !==0 && !force) {
     //   return Promise.resolve(false);
@@ -219,7 +219,7 @@ export class PasswordComponent implements OnInit {
   }
 
   validateCharacterInAlphabet(event: any) {
-    let input: string = event.key;
+    const input: string = event.key;
 
     // allow events where key length is > 1 (Backspace, Delete, etc)
     if (input.length === 1 && !this.alphabet.includes(input)) {
@@ -233,7 +233,7 @@ export class PasswordComponent implements OnInit {
   }
 
   public passwordStrength(): number {
-    let strength: number = this.appGlobal.getPasswordStrength(this.generatedPassword, this.options);
+    const strength: number = this.appGlobal.getPasswordStrength(this.generatedPassword, this.options);
     return strength;
   }
 
